@@ -54,6 +54,8 @@ public class RobotContainer {
     m_driverController.b().whileTrue(drive.rightMotorBackward());
     m_driverController.x().whileTrue(drive.rightMotorBackward());
     m_driverController.y().whileTrue(drive.rightMotorBackward());
+    m_driverController.rightTrigger().whileTrue(drive.rightMotorForwardTriggerCommand());
+    m_driverController.leftTrigger().whileTrue(drive.rightMotorBackwardTriggerCommand());
   }
 
   /**
