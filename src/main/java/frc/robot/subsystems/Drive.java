@@ -38,11 +38,11 @@ public class Drive extends SubsystemBase {
         () -> rightMotor.set(0));
   }
 
-    public Command rightMotorBackwardTriggerCommand(Supplier<Double> percent) {
-        return Commands.startEnd(
-            () -> rightMotor.set(-Math.abs(percent.get()) * DriveConstants.kMaxSpeed),
-            () -> rightMotor.set(0));
-    }
+  public Command rightMotorBackwardTriggerCommand(Supplier<Double> percent) {
+    return Commands.startEnd(
+        () -> rightMotor.set(-Math.abs(percent.get()) * DriveConstants.kMaxSpeed),
+        () -> rightMotor.set(0));
+  }
 
   public Command leftMotorTriggerCommand(Supplier<Double> percent) {
     return Commands.startEnd(
@@ -50,9 +50,9 @@ public class Drive extends SubsystemBase {
         () -> leftMotor.set(0));
   }
 
-    public Command leftMotorBackwardTriggerCommand(Supplier<Double> percent) {
-        return Commands.startEnd(
-            () -> leftMotor.set(-Math.abs(percent.get()) * DriveConstants.kMaxSpeed),
-            () -> leftMotor.set(0));
-    }
+  public Command leftMotorBackwardTriggerCommand(Supplier<Double> percent) {
+    return Commands.startEnd(
+        () -> leftMotor.set(-Math.abs(percent.get()) * DriveConstants.kMaxSpeed),
+        () -> leftMotor.set(0));
+  }
 }
