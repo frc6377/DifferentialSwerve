@@ -33,6 +33,30 @@ public class Drive extends SubsystemBase {
     return Commands.startEnd(() -> leftMotor.set(-drivePercent), () -> leftMotor.set(0));
   }
 
+  public Command motorsForward() {
+    return Commands.startEnd(
+        () -> {
+          leftMotor.set(drivePercent);
+          rightMotor.set(drivePercent);
+        },
+        () -> {
+          leftMotor.set(0);
+          rightMotor.set(0);
+        });
+  }
+
+  public Command motorsBackward() {
+    return Commands.startEnd(
+        () -> {
+          leftMotor.set(-drivePercent);
+          rightMotor.set(-drivePercent);
+        },
+        () -> {
+          leftMotor.set(0);
+          rightMotor.set(0);
+        });
+  }
+
   public Command rightMotorForwardTriggerCommand(Supplier<Double> percent) {
     return Commands.startEnd(
         () -> rightMotor.set(Math.abs(percent.get()) * DriveConstants.kMaxSpeed),
