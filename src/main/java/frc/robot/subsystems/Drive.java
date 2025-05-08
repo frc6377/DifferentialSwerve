@@ -8,6 +8,7 @@ import frc.robot.Constants.DriveConstants;
 import java.util.function.Supplier;
 
 public class Drive extends SubsystemBase {
+  final double drivePercent = 0.5;
   TalonFX leftMotor;
   TalonFX rightMotor;
 
@@ -17,19 +18,19 @@ public class Drive extends SubsystemBase {
   }
 
   public Command rightMotorForward() {
-    return Commands.startEnd(() -> rightMotor.set(0.5), () -> rightMotor.set(0));
+    return Commands.startEnd(() -> rightMotor.set(drivePercent), () -> rightMotor.set(0));
   }
 
   public Command rightMotorBackward() {
-    return startEnd(() -> rightMotor.set(-0.5), () -> rightMotor.set(0));
+    return startEnd(() -> rightMotor.set(-drivePercent), () -> rightMotor.set(0));
   }
 
   public Command leftMotorForward() {
-    return Commands.startEnd(() -> leftMotor.set(0.5), () -> leftMotor.set(0));
+    return Commands.startEnd(() -> leftMotor.set(drivePercent), () -> leftMotor.set(0));
   }
 
   public Command leftMotorBackward() {
-    return Commands.startEnd(() -> leftMotor.set(-0.5), () -> leftMotor.set(0));
+    return Commands.startEnd(() -> leftMotor.set(-drivePercent), () -> leftMotor.set(0));
   }
 
   public Command rightMotorForwardTriggerCommand(Supplier<Double> percent) {

@@ -52,10 +52,17 @@ public class RobotContainer {
     // cancelling on release.
     m_driverController.a().whileTrue(drive.rightMotorForward());
     m_driverController.b().whileTrue(drive.rightMotorBackward());
-    m_driverController.x().whileTrue(drive.rightMotorBackward());
-    m_driverController.y().whileTrue(drive.rightMotorBackward());
-    m_driverController.rightTrigger().whileTrue(drive.rightMotorForwardTriggerCommand());
-    m_driverController.leftTrigger().whileTrue(drive.rightMotorBackwardTriggerCommand());
+    m_driverController.y().whileTrue(drive.leftMotorForward());
+    m_driverController.x().whileTrue(drive.leftMotorBackward());
+    m_driverController
+        .rightTrigger(0.1)
+        .whileTrue(
+            drive.rightMotorForwardTriggerCommand(() -> m_driverController.getRightTriggerAxis()));
+    m_driverController
+        .leftTrigger(0.1)
+        .whileTrue(
+            drive.rightMotorBackwardTriggerCommand(
+                () -> -m_driverController.getRightTriggerAxis()));
   }
 
   /**
