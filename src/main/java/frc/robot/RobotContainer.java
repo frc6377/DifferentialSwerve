@@ -59,8 +59,7 @@ public class RobotContainer {
     m_driverController
         .leftTrigger(0.1)
         .whileTrue(
-            drive.rightMotorBackwardTriggerCommand(
-                () -> -m_driverController.getRightTriggerAxis()));
+            drive.leftMotorForwardTriggerCommand(() -> -m_driverController.getLeftTriggerAxis()));
   }
 
   /**

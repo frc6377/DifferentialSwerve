@@ -1,6 +1,8 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.hardware.TalonFX;
+import com.ctre.phoenix6.signals.NeutralModeValue;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -11,10 +13,15 @@ public class Drive extends SubsystemBase {
   final double drivePercent = 0.5;
   TalonFX leftMotor;
   TalonFX rightMotor;
+  TalonFXConfiguration config;
 
   public Drive() {
     leftMotor = new TalonFX(DriveConstants.leftMotorID);
     rightMotor = new TalonFX(DriveConstants.rightMotorID);
+
+    config = new TalonFXConfiguration();
+
+    config.MotorOutput.NeutralMode = NeutralModeValue.Brake;
   }
 
   public Command rightMotorForward() {
@@ -69,7 +76,7 @@ public class Drive extends SubsystemBase {
         () -> rightMotor.set(0));
   }
 
-  public Command leftMotorTriggerCommand(Supplier<Double> percent) {
+  public Command leftMotorForwardTriggerCommand(Supplier<Double> percent) {
     return Commands.startEnd(
         () -> leftMotor.set(Math.abs(percent.get()) * DriveConstants.kMaxSpeed),
         () -> leftMotor.set(0));
