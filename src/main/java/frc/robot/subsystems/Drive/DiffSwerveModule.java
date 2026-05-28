@@ -93,7 +93,6 @@ public class DiffSwerveModule {
         // In a real implementation, you would use encoders to determine the actual angle
         // For differential swerve, this angle is calculated from the difference between motor positions
         
-        // Placeholder - in actual code you'd use encoders to determine this
         double topPosition = topMotor.getPosition().getValueAsDouble();
         double bottomPosition = bottomMotor.getPosition().getValueAsDouble();
         
@@ -107,7 +106,6 @@ public class DiffSwerveModule {
         // In a real implementation, you would use encoders to determine the actual velocity
         // For differential swerve, velocity is the sum of the motor velocities
         
-        // Placeholder - in actual code you'd use encoders
         double topVelocity = topMotor.getVelocity().getValueAsDouble();
         double bottomVelocity = bottomMotor.getVelocity().getValueAsDouble();
         
